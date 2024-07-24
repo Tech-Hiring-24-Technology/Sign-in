@@ -1,0 +1,49 @@
+<?php
+
+session_start();
+
+include("db.php");
+
+if($_SERVER['REQUEST_METHOD'] == "POST")
+{
+$user_Email = $_POST['email'];
+$user_Password = $_POST['password'];
+
+
+	$query="insert into form(email,password) values ('$user_Email','$user_Password')";
+	mysqli_query($con,$query);
+	echo "<script type='text/javascript'> alert('succesfully sign in')</script>";
+
+}
+
+
+
+?>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sign In</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<h2>Sign In</h2>
+		<form method="POST">
+			<div class="input-field">
+				<input type="email" placeholder="Email" name="email"required>
+			</div>
+			<div class="input-field">
+				<input type="password" placeholder="Password" name="password"required>
+			</div>
+			<div class="input-field">
+				<input type="submit" value="Sign In ">
+			</div>
+			<div class="create-profile">
+				<a href="https://tech-hiring-24-technology.github.io/User-Profile/">Create a profile</a>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
